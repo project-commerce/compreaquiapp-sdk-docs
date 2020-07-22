@@ -18,7 +18,13 @@ Nosso script irá injetar em sua aplicação um novo objeto global, chamado Comp
 
 ```html
 <script>
-    CompreAquiAppSDK.init('1234');
+    CompreAquiAppSDK.init('1234', () => {
+        CompreAquiAppSDK
+            .getCEP()
+            .then(cep => {
+               console.log(cep);
+            });
+    });
 </script>
 ```
 
@@ -49,12 +55,12 @@ Nosso script irá injetar em sua aplicação um novo objeto global, chamado Comp
 
 | Método | Descrição | Retorno | Descrição retorno |
 |--|--|--|--|
-| init(customer: string) | Adiciona as permissões da sua empresa ao carrinho | void |  |
+| init(customer: string, callback: () => void) | Adiciona as permissões da sua empresa ao carrinho | void |  |
 | openCart() | Abre o carrinho do usuário de forma programática | void | |
 | getCEP() | Recupera o CEP registrado na sessão do usuário | string | CEP |
 | setCEP(cep: string) | Registra o CEP do usuário na sessão para recuperação de preços próximos | Promise\<string\> | Retorna uma promessa com o CEP registrado. |
 | addProduct(cep: string) | Adiciona um produto ao carrinho | Promise\<boolean\> | Retorna uma promessa para controle se o produto foi adicionado ao carrinho ou não |
 | addRecipe(idRecipe: string) | Adiciona uma receita ao carrinho | Promise\<boolean\> | Retorna uma promessa para controle se o produto foi adicionado ao carrinho ou não |
-| requestCEP() | Solicita o CEP ao usuário com nossa pop up padrão | Promise\<boolean\> | Retorna uma promessa para controle se o CEP foi registrado ou não |
+| requestCEP() | Solicita o CEP ao usuário com nossa pop up padrão | Promise\<string\> | Retorna uma promessa com o CEP registrado. |
 
 Obs.: Caso um dos métodos de interação com a API de preço como `CompreAquiAppSDK.addProduct` ou `CompreAquiAppSDK.addRecipe` e o CEP não tenham sido registrados na sessão, será realizado o `CompreAquiAppSDK.requestCEP` para captura do mesmo.

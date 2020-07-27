@@ -58,10 +58,10 @@ Nosso script irá injetar em sua aplicação um novo objeto global, chamado Comp
 | init(customer: string, callback: () => void) | Adiciona as permissões da sua empresa a cesta | void |  |
 | open() | Abre a cesta | void | |
 | close() | Fecha a cesta | void | |
-| isOpen() | Retorna o estado atual do cesta | void | |
+| isOpen() | Retorna o estado atual da cesta | void | |
 | getCEP() | Recupera o CEP registrado na sessão do usuário | string | CEP |
 | setCEP(cep: string) | Registra o CEP do usuário na sessão para recuperação de preços próximos | Promise\<string\> | Retorna uma promessa com o CEP registrado. |
 | addProduct(cep: string) | Adiciona um produto a cesta | Promise\<boolean\> | Retorna uma promessa para controle se o produto foi adicionado a cesta ou não |
 | addRecipe(idRecipe: string) | Adiciona uma receita a cesta | Promise\<boolean\> | Retorna uma promessa para controle se o produto foi adicionado a cesta ou não |
 
-Obs.: Caso um dos métodos de interação com a API de preço como `CompreAquiAppSDK.addProduct` ou `CompreAquiAppSDK.addRecipe` e o CEP não tenham sido registrados na sessão, será realizado o `CompreAquiAppSDK.requestCEP` para captura do mesmo.
+Obs.: Caso um dos métodos de interação com a API de preço como `CompreAquiAppSDK.addProduct` ou `CompreAquiAppSDK.addRecipe` e não seja encontrado um CEP registrado, o carrinho irá mostrar a solicitação de CEP ao usuário.

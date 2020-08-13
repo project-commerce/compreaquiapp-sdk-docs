@@ -62,6 +62,6 @@ Nosso script irá injetar em sua aplicação um novo objeto global, chamado Comp
 | getCEP() | Recupera o CEP registrado na sessão do usuário | string | CEP |
 | setCEP(cep: string) | Registra o CEP do usuário na sessão para recuperação de preços próximos | Promise\<string\> | Retorna uma promessa com o CEP registrado. |
 | addProduct(cep: string) | Adiciona um produto a cesta | Promise\<boolean\> | Retorna uma promessa para controle se o produto foi adicionado a cesta ou não |
-| addRecipe(idRecipe: string) | Adiciona uma receita a cesta | Promise\<boolean\> | Retorna uma promessa para controle se o produto foi adicionado a cesta ou não |
+| addRecipe(idRecipe: string, ean?: string) | Adiciona uma receita a cesta, possibilita também a passagem de um produto principal que não poderá ser substituído | Promise\<boolean\> | Retorna uma promessa para controle se o produto foi adicionado a cesta ou não |
 
 Obs.: Caso um dos métodos de interação com a API de preço como `CompreAquiAppSDK.addProduct` ou `CompreAquiAppSDK.addRecipe` e não seja encontrado um CEP registrado, o carrinho irá mostrar a solicitação de CEP ao usuário.
